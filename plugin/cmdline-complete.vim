@@ -307,7 +307,7 @@ function! s:CmdlineComplete(backward)
 			\  a:backward && s:comp_i == 0 ||
 			\ !a:backward && s:comp_i == len(s:completions) - 1)
 		let success = 0
-		if has('python')
+		if has('python') && !exists('g:cmdline_complete_no_python')
 			let success = s:GenerateCompletionsPython(s:seed, a:backward)
 		endif
 		if !success
